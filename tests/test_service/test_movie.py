@@ -39,7 +39,7 @@ def movie_dao():
 
     movie_dao.get_one = MagicMock(return_value=django_unchained)
     movie_dao.get_all = MagicMock(return_value=[django_unchained, burlesque, cross_the_line])
-    movie_dao.create = MagicMock(return_value=Movie(id=3))
+    movie_dao.create = MagicMock(return_value=cross_the_line)
     movie_dao.delete = MagicMock(return_value=Movie(id=2))
     movie_dao.update = MagicMock(return_value=Movie(id=1))
 
@@ -67,7 +67,7 @@ class TestMovieService:
 
     def test_create(self):
         movie_d = {
-            'id': 12,
+            'id': 55,
             'title': 'Монстр в Париже',
             'description': 'Париж. 1910 год. Ужасный монстр, напоминающий гигантское насекомое, нагоняет страх на всю Францию. Застенчивый киномеханик и неутомимый изобретатель начинают охоту на него. В этой погоне они знакомятся со звездой кабаре, сумасшедшим ученым и его умной обезьянкой и, наконец, самим монстром, который оказывается совсем не страшным. Теперь безобидное, как блоха, чудовище ищет у своих новых друзей защиты от вредного начальника городской полиции.',
             'trailer': 'https://www.youtube.com/watch?v=rKsdTuvrF5w',
@@ -89,7 +89,7 @@ class TestMovieService:
 
     def test_update(self):
         movie_d = {
-            'id': 25,
+            'id': 55,
             'title': 'Монстр в Париже 2',
             'description': 'Париж. 1950 год. Ужасный монстр, напоминающий гигантское насекомое, нагоняет страх на всю Францию. Застенчивый киномеханик и неутомимый изобретатель начинают охоту на него. В этой погоне они знакомятся со звездой кабаре, сумасшедшим ученым и его умной обезьянкой и, наконец, самим монстром, который оказывается совсем не страшным. Теперь безобидное, как блоха, чудовище ищет у своих новых друзей защиты от вредного начальника городской полиции.',
             'trailer': 'https://www.youtube.com/watch?v=rKsdTuvrF5w',
@@ -102,4 +102,4 @@ class TestMovieService:
         self.movie_service.update(movie_d)
 
     def test_delete(self):
-        self.movie_service.delete(3)
+        self.movie_service.delete(2)
